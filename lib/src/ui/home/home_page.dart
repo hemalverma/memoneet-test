@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infotexh_test/src/constants/colors.dart';
 import 'package:infotexh_test/src/logic/repo/app_repository.dart';
 import 'package:infotexh_test/src/routing/app_router.dart';
+import 'package:infotexh_test/src/ui/home/graphql_api_data/api_data_widget.dart';
 import 'package:infotexh_test/src/ui/home/home_page_model.dart';
 import 'package:infotexh_test/src/utils/text_style.dart';
 
@@ -123,6 +124,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ],
               ),
             ),
+          const Expanded(
+            child: ApiDataWidget(),
+          ),
         ],
       ),
     );

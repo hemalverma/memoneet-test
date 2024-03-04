@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infotexh_test/src/models/user_model.dart';
 
+import '../../../models/episode_data_model.dart';
 import '../../../models/response/api_response.dart';
 import 'api_service_impl.dart';
 
@@ -23,4 +24,6 @@ abstract class ApiService {
     required int userId,
     required UserModel userModel,
   });
+
+  Future<ApiResponse<List<SingleEpisode>>> fetchAllEpisodes();
 }

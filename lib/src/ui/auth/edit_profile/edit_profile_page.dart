@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infotexh_test/src/logic/repo/app_repository.dart';
 import 'package:infotexh_test/src/ui/auth/edit_profile/edit_profile_page_model.dart';
+import 'package:infotexh_test/src/ui/home/home_page_model.dart';
 import 'package:infotexh_test/src/utils/app_button.dart';
 import 'package:infotexh_test/src/utils/app_snack_bar.dart';
 import 'package:infotexh_test/src/utils/app_text_field.dart';
@@ -40,6 +41,7 @@ class _RegisterPageState extends ConsumerState<EditProfilePage> {
       if (next != previous) {
         if (next == SaveStatus.loaded) {
           ref.read(appRepositoryProvider.notifier).updateData();
+          ref.read(homePageModelProvider.notifier).fetchAllUsers();
           context.router.pop();
           AppSnackBar.showSuccessMessage(context, 'Profile updated');
         }
