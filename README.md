@@ -42,6 +42,11 @@ To build android apk for this project run
 
 https://github.com/hemalverma/memoneet-test/assets/42999928/34318b31-1672-4e81-a309-b42c8f969198
 
+## App Download Link
+
+[Download Now](https://github.com/hemalverma/memoneet-test/blob/master/assets/app-portfolio/app-armeabi-v7a-release.apk)
+
+
 
 ## Authors
 
