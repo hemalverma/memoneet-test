@@ -1,16 +1,34 @@
-# memoneet_test
 
-A new Flutter project.
+# Memoneet Assesment
 
-## Getting Started
+Flutter aaplication assesment to demonstrate the implementation of firebase CRUD operations
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Firebase Auth Features 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- User SignUp (With  Email and Passward)
+- User Login
+
+
+## Firebase Database Features 
+
+- Read Notes
+- Create Note
+- Update Note
+- Delete Note
+
+
+## Deployment
+
+To build android apk for this project run
+
+```bash
+  flutter build apk --split-per-abi
+```
+
+
+## Authors
+
+- [@hemalverma](https://www.github.com/hemalverma)
+
