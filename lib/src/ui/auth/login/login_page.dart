@@ -32,7 +32,7 @@ class _RegisterPageState extends ConsumerState<LoginPage> {
         (previous, next) {
       if (next != previous) {
         if (next == AppState.authenticated) {
-          context.router.replace(const HomeRoute());
+          //context.router.replace(const HomeRoute());
         }
       }
     });
@@ -44,6 +44,9 @@ class _RegisterPageState extends ConsumerState<LoginPage> {
               context,
               ref.read(loginPageModelProvider
                   .select((value) => value.errorMessage ?? 'Error Occurred')));
+        }
+        if (next == LoginStatus.loginSuccess) {
+          context.router.replace(const HomeRoute());
         }
       }
     });
