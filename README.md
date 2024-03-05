@@ -26,6 +26,21 @@ To build android apk for this project run
 ```bash
   flutter build apk --split-per-abi
 ```
+## Screenshots
+
+<div style="display:flex">
+  
+<img src="https://github.com/hemalverma/memoneet-test/blob/master/assets/app-portfolio/ss1.jpg" alt="drawing" style="width:160px;"/>
+<img src="https://github.com/hemalverma/memoneet-test/blob/master/assets/app-portfolio/ss2.jpg" alt="drawing" style="width:160px;"/>
+<img src="https://github.com/hemalverma/memoneet-test/blob/master/assets/app-portfolio/ss3.jpg" alt="drawing" style="width:160px;"/>
+<img src="https://github.com/hemalverma/memoneet-test/blob/master/assets/app-portfolio/ss4.jpg" alt="drawing" style="width:160px;"/>
+<img src="https://github.com/hemalverma/memoneet-test/blob/master/assets/app-portfolio/ss5.jpg" alt="drawing" style="width:160px;"/>
+</div>
+
+
+## App Video
+
+https://github.com/hemalverma/memoneet-test/assets/42999928/34318b31-1672-4e81-a309-b42c8f969198
 
 
 ## Authors
