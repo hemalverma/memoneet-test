@@ -1,8 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:infotexh_test/src/logic/repo/app_repository.dart';
-import 'package:infotexh_test/src/logic/services/local_db/collections/login.dart';
-import 'package:infotexh_test/src/models/response/api_response.dart';
+import 'package:memoneet_test/src/logic/repo/app_repository.dart';
+import 'package:memoneet_test/src/models/response/api_response.dart';
 
 import '../../../logic/services/api/api_service.dart';
 import '../register/register_page_model.dart';
@@ -65,7 +64,6 @@ class LoginPageModel extends StateNotifier<LoginPageState> {
       }
       //login success
       ref.read(appRepositoryProvider.notifier).setUser(response.data!);
-      LoginCollection.saveLoggedInSession(response.data!.id);
       state = state.copyWith(loginStatus: LoginStatus.loginSuccess);
     } catch (e) {
       setError(e.toString());

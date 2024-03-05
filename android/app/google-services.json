@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "780127076929",
+    "project_id": "memoneet-test",
+    "storage_bucket": "memoneet-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780127076929:android:3a82250e831347ec4b7cc0",
+        "android_client_info": {
+          "package_name": "com.example.memoneet_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQyUU2Mjr5LcNv_54jhfwNZlkvxWRp1Yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

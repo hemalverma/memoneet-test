@@ -1,9 +1,9 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:infotexh_test/src/logic/services/isar_database.dart';
-import 'package:infotexh_test/src/models/user_model.dart';
-
-import '../services/local_db/collections/login.dart';
+import 'package:memoneet_test/src/models/user_model.dart';
 
 part 'app_repository.freezed.dart';
 
@@ -16,6 +16,9 @@ final appRepositoryProvider =
 
 class AppRepositoryModel extends StateNotifier<AppRepositoryState> {
   final StateNotifierProviderRef ref;
+  StreamSubscription<User?>? _authStateChanges;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   AppRepositoryModel({
     required this.ref,
   }) : super(AppRepositoryState()) {
@@ -24,37 +27,35 @@ class AppRepositoryModel extends StateNotifier<AppRepositoryState> {
 
   checkLoggedInUser() async {
     setAppStatus(AppState.authenticating);
-    LoginCollection.isLoggedInSession().then((value) async {
-      if (value != null) {
-        print('user id ${value.userId}');
-        final user = await IsarDatabase.fetchById(value.userId!);
-        if (user != null) {
-          print(user.name);
-          state = state.copyWith(
-              appStatus: AppState.authenticated, userModel: user);
-        } else {
-          setAppStatus(AppState.unauthenticated);
-        }
-      } else {
+    _authStateChanges = _auth.authStateChanges().listen((User? user) {
+      if (user == null) {
         setAppStatus(AppState.unauthenticated);
+      } else {
+        setUser(UserModel()
+          ..email = user.email!
+          ..id = user.uid
+          ..name = user.displayName);
+        setAppStatus(AppState.authenticated);
       }
     });
+    final user = _auth.currentUser;
+    if (user != null) {
+      setUser(UserModel()
+        ..email = user.email!
+        ..id = user.uid
+        ..name = user.displayName!);
+      setAppStatus(AppState.authenticated);
+      return;
+    }
+    setAppStatus(AppState.unauthenticated);
   }
 
-  updateData() async {
-    if (state.userModel != null) {
-      final data = await IsarDatabase.fetchById(state.userModel!.id);
-      state = state.copyWith(userModel: data);
-    }
-  }
+  updateData() async {}
 
   logout() async {
-    if (state.userModel != null) {
-      print('user not null');
-      final res = await LoginCollection.clearLoggedInSession();
-      if (res) {
-        setAppStatus(AppState.unauthenticated);
-      }
+    if (_auth.currentUser != null) {
+      await _auth.signOut();
+      removeUser();
     }
   }
 

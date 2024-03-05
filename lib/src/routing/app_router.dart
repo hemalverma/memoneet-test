@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:infotexh_test/src/ui/auth/register/register_page.dart';
+import 'package:flutter/material.dart';
+import 'package:memoneet_test/src/ui/auth/register/register_page.dart';
 
-import '../ui/auth/edit_profile/edit_profile_page.dart';
+import '../models/note_model.dart';
 import '../ui/auth/login/login_page.dart';
+import '../ui/home/add_note/add_note_page.dart';
+import '../ui/home/edit_note/edit_note_page.dart';
 import '../ui/home/home_page.dart';
 import '../ui/onboarding/splash_page.dart';
 
@@ -31,8 +34,14 @@ class AppRouter extends _$AppRouter {
           path: '/home',
         ),
         AutoRoute(
-          page: EditProfileRoute.page,
-          path: '/edit-profile',
+          page: AddNoteRoute.page,
+          path: '/add-note',
+          fullscreenDialog: true,
+        ),
+        AutoRoute(
+          page: EditNoteRoute.page,
+          path: '/edit-note',
+          fullscreenDialog: true,
         ),
       ];
 }

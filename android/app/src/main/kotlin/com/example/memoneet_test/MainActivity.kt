@@ -1,4 +1,4 @@
-package com.example.infotexh_test
+package com.example.memoneet_test
 
 import io.flutter.embedding.android.FlutterActivity
 

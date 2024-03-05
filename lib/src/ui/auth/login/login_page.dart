@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:infotexh_test/src/logic/repo/app_repository.dart';
-import 'package:infotexh_test/src/routing/app_router.dart';
-import 'package:infotexh_test/src/ui/auth/login/login_page_model.dart';
-import 'package:infotexh_test/src/utils/app_button.dart';
-import 'package:infotexh_test/src/utils/app_snack_bar.dart';
-import 'package:infotexh_test/src/utils/app_text_field.dart';
-import 'package:infotexh_test/src/utils/text_style.dart';
+import 'package:memoneet_test/src/logic/repo/app_repository.dart';
+import 'package:memoneet_test/src/routing/app_router.dart';
+import 'package:memoneet_test/src/ui/auth/login/login_page_model.dart';
+import 'package:memoneet_test/src/utils/app_button.dart';
+import 'package:memoneet_test/src/utils/app_snack_bar.dart';
+import 'package:memoneet_test/src/utils/app_text_field.dart';
+import 'package:memoneet_test/src/utils/text_style.dart';
 
 import '../../../constants/colors.dart';
 

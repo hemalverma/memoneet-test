@@ -24,8 +24,6 @@ mixin _$RegisterPageState {
   bool get passwordError => throw _privateConstructorUsedError;
   String? get confirmPassword => throw _privateConstructorUsedError;
   bool get confirmPasswordError => throw _privateConstructorUsedError;
-  String? get phone => throw _privateConstructorUsedError;
-  bool get phoneError => throw _privateConstructorUsedError;
   RegisterStatus get registerStatus => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -49,8 +47,6 @@ abstract class $RegisterPageStateCopyWith<$Res> {
       bool passwordError,
       String? confirmPassword,
       bool confirmPasswordError,
-      String? phone,
-      bool phoneError,
       RegisterStatus registerStatus,
       String? errorMessage});
 }
@@ -76,8 +72,6 @@ class _$RegisterPageStateCopyWithImpl<$Res, $Val extends RegisterPageState>
     Object? passwordError = null,
     Object? confirmPassword = freezed,
     Object? confirmPasswordError = null,
-    Object? phone = freezed,
-    Object? phoneError = null,
     Object? registerStatus = null,
     Object? errorMessage = freezed,
   }) {
@@ -114,14 +108,6 @@ class _$RegisterPageStateCopyWithImpl<$Res, $Val extends RegisterPageState>
           ? _value.confirmPasswordError
           : confirmPasswordError // ignore: cast_nullable_to_non_nullable
               as bool,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneError: null == phoneError
-          ? _value.phoneError
-          : phoneError // ignore: cast_nullable_to_non_nullable
-              as bool,
       registerStatus: null == registerStatus
           ? _value.registerStatus
           : registerStatus // ignore: cast_nullable_to_non_nullable
@@ -151,8 +137,6 @@ abstract class _$$RegisterPageImplCopyWith<$Res>
       bool passwordError,
       String? confirmPassword,
       bool confirmPasswordError,
-      String? phone,
-      bool phoneError,
       RegisterStatus registerStatus,
       String? errorMessage});
 }
@@ -176,8 +160,6 @@ class __$$RegisterPageImplCopyWithImpl<$Res>
     Object? passwordError = null,
     Object? confirmPassword = freezed,
     Object? confirmPasswordError = null,
-    Object? phone = freezed,
-    Object? phoneError = null,
     Object? registerStatus = null,
     Object? errorMessage = freezed,
   }) {
@@ -214,14 +196,6 @@ class __$$RegisterPageImplCopyWithImpl<$Res>
           ? _value.confirmPasswordError
           : confirmPasswordError // ignore: cast_nullable_to_non_nullable
               as bool,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneError: null == phoneError
-          ? _value.phoneError
-          : phoneError // ignore: cast_nullable_to_non_nullable
-              as bool,
       registerStatus: null == registerStatus
           ? _value.registerStatus
           : registerStatus // ignore: cast_nullable_to_non_nullable
@@ -246,8 +220,6 @@ class _$RegisterPageImpl implements _RegisterPage {
       this.passwordError = false,
       this.confirmPassword,
       this.confirmPasswordError = false,
-      this.phone,
-      this.phoneError = false,
       this.registerStatus = RegisterStatus.initial,
       this.errorMessage});
 
@@ -272,11 +244,6 @@ class _$RegisterPageImpl implements _RegisterPage {
   @JsonKey()
   final bool confirmPasswordError;
   @override
-  final String? phone;
-  @override
-  @JsonKey()
-  final bool phoneError;
-  @override
   @JsonKey()
   final RegisterStatus registerStatus;
   @override
@@ -284,7 +251,7 @@ class _$RegisterPageImpl implements _RegisterPage {
 
   @override
   String toString() {
-    return 'RegisterPageState(name: $name, nameError: $nameError, email: $email, emailError: $emailError, password: $password, passwordError: $passwordError, confirmPassword: $confirmPassword, confirmPasswordError: $confirmPasswordError, phone: $phone, phoneError: $phoneError, registerStatus: $registerStatus, errorMessage: $errorMessage)';
+    return 'RegisterPageState(name: $name, nameError: $nameError, email: $email, emailError: $emailError, password: $password, passwordError: $passwordError, confirmPassword: $confirmPassword, confirmPasswordError: $confirmPasswordError, registerStatus: $registerStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -306,9 +273,6 @@ class _$RegisterPageImpl implements _RegisterPage {
                 other.confirmPassword == confirmPassword) &&
             (identical(other.confirmPasswordError, confirmPasswordError) ||
                 other.confirmPasswordError == confirmPasswordError) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.phoneError, phoneError) ||
-                other.phoneError == phoneError) &&
             (identical(other.registerStatus, registerStatus) ||
                 other.registerStatus == registerStatus) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -326,8 +290,6 @@ class _$RegisterPageImpl implements _RegisterPage {
       passwordError,
       confirmPassword,
       confirmPasswordError,
-      phone,
-      phoneError,
       registerStatus,
       errorMessage);
 
@@ -348,8 +310,6 @@ abstract class _RegisterPage implements RegisterPageState {
       final bool passwordError,
       final String? confirmPassword,
       final bool confirmPasswordError,
-      final String? phone,
-      final bool phoneError,
       final RegisterStatus registerStatus,
       final String? errorMessage}) = _$RegisterPageImpl;
 
@@ -369,10 +329,6 @@ abstract class _RegisterPage implements RegisterPageState {
   String? get confirmPassword;
   @override
   bool get confirmPasswordError;
-  @override
-  String? get phone;
-  @override
-  bool get phoneError;
   @override
   RegisterStatus get registerStatus;
   @override

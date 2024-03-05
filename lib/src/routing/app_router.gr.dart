@@ -15,10 +15,20 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    EditProfileRoute.name: (routeData) {
+    AddNoteRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const EditProfilePage(),
+        child: const AddNotePage(),
+      );
+    },
+    EditNoteRoute.name: (routeData) {
+      final args = routeData.argsAs<EditNoteRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EditNotePage(
+          key: args.key,
+          noteModel: args.noteModel,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -49,17 +59,55 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [EditProfilePage]
-class EditProfileRoute extends PageRouteInfo<void> {
-  const EditProfileRoute({List<PageRouteInfo>? children})
+/// [AddNotePage]
+class AddNoteRoute extends PageRouteInfo<void> {
+  const AddNoteRoute({List<PageRouteInfo>? children})
       : super(
-          EditProfileRoute.name,
+          AddNoteRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'EditProfileRoute';
+  static const String name = 'AddNoteRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EditNotePage]
+class EditNoteRoute extends PageRouteInfo<EditNoteRouteArgs> {
+  EditNoteRoute({
+    Key? key,
+    required NoteModel noteModel,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EditNoteRoute.name,
+          args: EditNoteRouteArgs(
+            key: key,
+            noteModel: noteModel,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EditNoteRoute';
+
+  static const PageInfo<EditNoteRouteArgs> page =
+      PageInfo<EditNoteRouteArgs>(name);
+}
+
+class EditNoteRouteArgs {
+  const EditNoteRouteArgs({
+    this.key,
+    required this.noteModel,
+  });
+
+  final Key? key;
+
+  final NoteModel noteModel;
+
+  @override
+  String toString() {
+    return 'EditNoteRouteArgs{key: $key, noteModel: $noteModel}';
+  }
 }
 
 /// generated route for

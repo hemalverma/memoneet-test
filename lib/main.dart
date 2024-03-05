@@ -1,11 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:infotexh_test/src/app.dart';
-import 'package:infotexh_test/src/logic/services/isar_database.dart';
+import 'package:memoneet_test/firebase_options.dart';
+import 'package:memoneet_test/src/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await IsarDatabase.initialize();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     const ProviderScope(
       child: MyApp(),

@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:infotexh_test/src/models/user_model.dart';
+import 'package:memoneet_test/src/models/note_model.dart';
+import 'package:memoneet_test/src/models/user_model.dart';
 
-import '../../../models/episode_data_model.dart';
 import '../../../models/response/api_response.dart';
 import 'api_service_impl.dart';
 
@@ -10,7 +11,7 @@ final apiServiceProvider = Provider<ApiService>(
 );
 
 abstract class ApiService {
-  Future<ApiResponse<UserModel>> createUser({
+  Future<ApiResponse<UserCredential>> createUser({
     required UserModel user,
   });
   Future<ApiResponse<UserModel>> login({
@@ -25,5 +26,17 @@ abstract class ApiService {
     required UserModel userModel,
   });
 
-  Future<ApiResponse<List<SingleEpisode>>> fetchAllEpisodes();
+  Future<ApiResponse<List<NoteModel>>> fetchAllNotes();
+
+  Future<ApiResponse<bool>> addNote({
+    required NoteModel noteModel,
+  });
+  Future<ApiResponse<bool>> deleteNote({
+    required String id,
+  });
+
+  Future<ApiResponse<bool>> updateNote({
+    required NoteModel noteModel,
+    required noteId,
+  });
 }

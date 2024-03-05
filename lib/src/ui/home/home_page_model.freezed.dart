@@ -16,9 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomePageState {
-  List<UserModel>? get users => throw _privateConstructorUsedError;
+  List<NoteModel>? get notes => throw _privateConstructorUsedError;
   HomeStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  AddNoteStatus get addNoteStatus => throw _privateConstructorUsedError;
+  String? get addNoteErrorMessage => throw _privateConstructorUsedError;
+  String? get deletingNoteId => throw _privateConstructorUsedError;
+  DeleteNoteStatus get deleteNoteStatus => throw _privateConstructorUsedError;
+  String? get deleteNoteErrorMessage => throw _privateConstructorUsedError;
+  UpdateNoteStatus get updateNoteStatus => throw _privateConstructorUsedError;
+  String? get updateNoteErrorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomePageStateCopyWith<HomePageState> get copyWith =>
@@ -31,7 +38,17 @@ abstract class $HomePageStateCopyWith<$Res> {
           HomePageState value, $Res Function(HomePageState) then) =
       _$HomePageStateCopyWithImpl<$Res, HomePageState>;
   @useResult
-  $Res call({List<UserModel>? users, HomeStatus status, String? errorMessage});
+  $Res call(
+      {List<NoteModel>? notes,
+      HomeStatus status,
+      String? errorMessage,
+      AddNoteStatus addNoteStatus,
+      String? addNoteErrorMessage,
+      String? deletingNoteId,
+      DeleteNoteStatus deleteNoteStatus,
+      String? deleteNoteErrorMessage,
+      UpdateNoteStatus updateNoteStatus,
+      String? updateNoteErrorMessage});
 }
 
 /// @nodoc
@@ -47,15 +64,22 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? users = freezed,
+    Object? notes = freezed,
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? addNoteStatus = null,
+    Object? addNoteErrorMessage = freezed,
+    Object? deletingNoteId = freezed,
+    Object? deleteNoteStatus = null,
+    Object? deleteNoteErrorMessage = freezed,
+    Object? updateNoteStatus = null,
+    Object? updateNoteErrorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      users: freezed == users
-          ? _value.users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>?,
+      notes: freezed == notes
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as List<NoteModel>?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -63,6 +87,34 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addNoteStatus: null == addNoteStatus
+          ? _value.addNoteStatus
+          : addNoteStatus // ignore: cast_nullable_to_non_nullable
+              as AddNoteStatus,
+      addNoteErrorMessage: freezed == addNoteErrorMessage
+          ? _value.addNoteErrorMessage
+          : addNoteErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deletingNoteId: freezed == deletingNoteId
+          ? _value.deletingNoteId
+          : deletingNoteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deleteNoteStatus: null == deleteNoteStatus
+          ? _value.deleteNoteStatus
+          : deleteNoteStatus // ignore: cast_nullable_to_non_nullable
+              as DeleteNoteStatus,
+      deleteNoteErrorMessage: freezed == deleteNoteErrorMessage
+          ? _value.deleteNoteErrorMessage
+          : deleteNoteErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updateNoteStatus: null == updateNoteStatus
+          ? _value.updateNoteStatus
+          : updateNoteStatus // ignore: cast_nullable_to_non_nullable
+              as UpdateNoteStatus,
+      updateNoteErrorMessage: freezed == updateNoteErrorMessage
+          ? _value.updateNoteErrorMessage
+          : updateNoteErrorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -76,7 +128,17 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
       __$$HomePageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<UserModel>? users, HomeStatus status, String? errorMessage});
+  $Res call(
+      {List<NoteModel>? notes,
+      HomeStatus status,
+      String? errorMessage,
+      AddNoteStatus addNoteStatus,
+      String? addNoteErrorMessage,
+      String? deletingNoteId,
+      DeleteNoteStatus deleteNoteStatus,
+      String? deleteNoteErrorMessage,
+      UpdateNoteStatus updateNoteStatus,
+      String? updateNoteErrorMessage});
 }
 
 /// @nodoc
@@ -90,15 +152,22 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? users = freezed,
+    Object? notes = freezed,
     Object? status = null,
     Object? errorMessage = freezed,
+    Object? addNoteStatus = null,
+    Object? addNoteErrorMessage = freezed,
+    Object? deletingNoteId = freezed,
+    Object? deleteNoteStatus = null,
+    Object? deleteNoteErrorMessage = freezed,
+    Object? updateNoteStatus = null,
+    Object? updateNoteErrorMessage = freezed,
   }) {
     return _then(_$HomePageStateImpl(
-      users: freezed == users
-          ? _value._users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>?,
+      notes: freezed == notes
+          ? _value._notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as List<NoteModel>?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -106,6 +175,34 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addNoteStatus: null == addNoteStatus
+          ? _value.addNoteStatus
+          : addNoteStatus // ignore: cast_nullable_to_non_nullable
+              as AddNoteStatus,
+      addNoteErrorMessage: freezed == addNoteErrorMessage
+          ? _value.addNoteErrorMessage
+          : addNoteErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deletingNoteId: freezed == deletingNoteId
+          ? _value.deletingNoteId
+          : deletingNoteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deleteNoteStatus: null == deleteNoteStatus
+          ? _value.deleteNoteStatus
+          : deleteNoteStatus // ignore: cast_nullable_to_non_nullable
+              as DeleteNoteStatus,
+      deleteNoteErrorMessage: freezed == deleteNoteErrorMessage
+          ? _value.deleteNoteErrorMessage
+          : deleteNoteErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updateNoteStatus: null == updateNoteStatus
+          ? _value.updateNoteStatus
+          : updateNoteStatus // ignore: cast_nullable_to_non_nullable
+              as UpdateNoteStatus,
+      updateNoteErrorMessage: freezed == updateNoteErrorMessage
+          ? _value.updateNoteErrorMessage
+          : updateNoteErrorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -115,17 +212,24 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
 
 class _$HomePageStateImpl implements _HomePageState {
   const _$HomePageStateImpl(
-      {final List<UserModel>? users,
+      {final List<NoteModel>? notes,
       this.status = HomeStatus.loading,
-      this.errorMessage})
-      : _users = users;
+      this.errorMessage,
+      this.addNoteStatus = AddNoteStatus.initial,
+      this.addNoteErrorMessage,
+      this.deletingNoteId,
+      this.deleteNoteStatus = DeleteNoteStatus.initial,
+      this.deleteNoteErrorMessage,
+      this.updateNoteStatus = UpdateNoteStatus.initial,
+      this.updateNoteErrorMessage})
+      : _notes = notes;
 
-  final List<UserModel>? _users;
+  final List<NoteModel>? _notes;
   @override
-  List<UserModel>? get users {
-    final value = _users;
+  List<NoteModel>? get notes {
+    final value = _notes;
     if (value == null) return null;
-    if (_users is EqualUnmodifiableListView) return _users;
+    if (_notes is EqualUnmodifiableListView) return _notes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -135,10 +239,27 @@ class _$HomePageStateImpl implements _HomePageState {
   final HomeStatus status;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final AddNoteStatus addNoteStatus;
+  @override
+  final String? addNoteErrorMessage;
+  @override
+  final String? deletingNoteId;
+  @override
+  @JsonKey()
+  final DeleteNoteStatus deleteNoteStatus;
+  @override
+  final String? deleteNoteErrorMessage;
+  @override
+  @JsonKey()
+  final UpdateNoteStatus updateNoteStatus;
+  @override
+  final String? updateNoteErrorMessage;
 
   @override
   String toString() {
-    return 'HomePageState(users: $users, status: $status, errorMessage: $errorMessage)';
+    return 'HomePageState(notes: $notes, status: $status, errorMessage: $errorMessage, addNoteStatus: $addNoteStatus, addNoteErrorMessage: $addNoteErrorMessage, deletingNoteId: $deletingNoteId, deleteNoteStatus: $deleteNoteStatus, deleteNoteErrorMessage: $deleteNoteErrorMessage, updateNoteStatus: $updateNoteStatus, updateNoteErrorMessage: $updateNoteErrorMessage)';
   }
 
   @override
@@ -146,15 +267,39 @@ class _$HomePageStateImpl implements _HomePageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomePageStateImpl &&
-            const DeepCollectionEquality().equals(other._users, _users) &&
+            const DeepCollectionEquality().equals(other._notes, _notes) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.addNoteStatus, addNoteStatus) ||
+                other.addNoteStatus == addNoteStatus) &&
+            (identical(other.addNoteErrorMessage, addNoteErrorMessage) ||
+                other.addNoteErrorMessage == addNoteErrorMessage) &&
+            (identical(other.deletingNoteId, deletingNoteId) ||
+                other.deletingNoteId == deletingNoteId) &&
+            (identical(other.deleteNoteStatus, deleteNoteStatus) ||
+                other.deleteNoteStatus == deleteNoteStatus) &&
+            (identical(other.deleteNoteErrorMessage, deleteNoteErrorMessage) ||
+                other.deleteNoteErrorMessage == deleteNoteErrorMessage) &&
+            (identical(other.updateNoteStatus, updateNoteStatus) ||
+                other.updateNoteStatus == updateNoteStatus) &&
+            (identical(other.updateNoteErrorMessage, updateNoteErrorMessage) ||
+                other.updateNoteErrorMessage == updateNoteErrorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_users), status, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_notes),
+      status,
+      errorMessage,
+      addNoteStatus,
+      addNoteErrorMessage,
+      deletingNoteId,
+      deleteNoteStatus,
+      deleteNoteErrorMessage,
+      updateNoteStatus,
+      updateNoteErrorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -165,16 +310,37 @@ class _$HomePageStateImpl implements _HomePageState {
 
 abstract class _HomePageState implements HomePageState {
   const factory _HomePageState(
-      {final List<UserModel>? users,
+      {final List<NoteModel>? notes,
       final HomeStatus status,
-      final String? errorMessage}) = _$HomePageStateImpl;
+      final String? errorMessage,
+      final AddNoteStatus addNoteStatus,
+      final String? addNoteErrorMessage,
+      final String? deletingNoteId,
+      final DeleteNoteStatus deleteNoteStatus,
+      final String? deleteNoteErrorMessage,
+      final UpdateNoteStatus updateNoteStatus,
+      final String? updateNoteErrorMessage}) = _$HomePageStateImpl;
 
   @override
-  List<UserModel>? get users;
+  List<NoteModel>? get notes;
   @override
   HomeStatus get status;
   @override
   String? get errorMessage;
+  @override
+  AddNoteStatus get addNoteStatus;
+  @override
+  String? get addNoteErrorMessage;
+  @override
+  String? get deletingNoteId;
+  @override
+  DeleteNoteStatus get deleteNoteStatus;
+  @override
+  String? get deleteNoteErrorMessage;
+  @override
+  UpdateNoteStatus get updateNoteStatus;
+  @override
+  String? get updateNoteErrorMessage;
   @override
   @JsonKey(ignore: true)
   _$$HomePageStateImplCopyWith<_$HomePageStateImpl> get copyWith =>

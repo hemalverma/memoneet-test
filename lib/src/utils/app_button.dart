@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:infotexh_test/src/constants/colors.dart';
+import 'package:memoneet_test/src/constants/colors.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({

@@ -1,6 +1,6 @@
 {
-    "name": "infotexh_test",
-    "short_name": "infotexh_test",
+    "name": "memoneet_test",
+    "short_name": "memoneet_test",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

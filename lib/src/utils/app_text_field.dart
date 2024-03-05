@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:infotexh_test/src/constants/colors.dart';
+import 'package:memoneet_test/src/constants/colors.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({

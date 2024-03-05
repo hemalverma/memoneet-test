@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:infotexh_test/src/routing/app_router.dart';
-import 'package:infotexh_test/src/ui/auth/register/register_page_model.dart';
-import 'package:infotexh_test/src/utils/app_button.dart';
-import 'package:infotexh_test/src/utils/app_snack_bar.dart';
-import 'package:infotexh_test/src/utils/app_text_field.dart';
-import 'package:infotexh_test/src/utils/text_style.dart';
+import 'package:memoneet_test/src/routing/app_router.dart';
+import 'package:memoneet_test/src/ui/auth/register/register_page_model.dart';
+import 'package:memoneet_test/src/utils/app_button.dart';
+import 'package:memoneet_test/src/utils/app_snack_bar.dart';
+import 'package:memoneet_test/src/utils/app_text_field.dart';
+import 'package:memoneet_test/src/utils/text_style.dart';
 
 import '../../../constants/colors.dart';
 
@@ -21,7 +21,6 @@ class RegisterPage extends ConsumerStatefulWidget {
 class _RegisterPageState extends ConsumerState<RegisterPage> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
-  final phoneController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
@@ -50,8 +49,6 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
         ref.watch(registerPageModelProvider.select((value) => value.nameError));
     final emailError = ref
         .watch(registerPageModelProvider.select((value) => value.emailError));
-    final phoneError = ref
-        .watch(registerPageModelProvider.select((value) => value.phoneError));
     final passwordError = ref.watch(
         registerPageModelProvider.select((value) => value.passwordError));
     final confirmPasswordError = ref.watch(registerPageModelProvider
@@ -129,26 +126,6 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                       ref
                           .read(registerPageModelProvider.notifier)
                           .setEmail(val);
-                    },
-                  ),
-                  AppTextField(
-                    hint: 'Enter your phone number',
-                    controller: phoneController,
-                    keyboardType: TextInputType.phone,
-                    errorText:
-                        phoneError && status == RegisterStatus.registerError
-                            ? ref.read(registerPageModelProvider
-                                .select((value) => value.errorMessage))
-                            : null,
-                    onChanged: (val) {
-                      if (val.isNotEmpty) {
-                        ref
-                            .read(registerPageModelProvider.notifier)
-                            .setPhoneError(false);
-                      }
-                      ref
-                          .read(registerPageModelProvider.notifier)
-                          .setPhone(val);
                     },
                   ),
                   AppTextField(

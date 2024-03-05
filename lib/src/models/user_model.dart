@@ -1,12 +1,13 @@
-import 'package:isar/isar.dart';
-
-part 'user_model.g.dart';
-
-@Collection()
 class UserModel {
-  Id id = Isar.autoIncrement;
+  String? id;
   String? name;
   String? email;
-  String? phone;
   String? password;
+
+  UserModel({
+    this.id,
+    this.name,
+    this.email,
+    this.password,
+  });
 }

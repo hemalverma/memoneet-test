@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:infotexh_test/src/routing/app_router.dart';
+import 'package:memoneet_test/src/routing/app_router.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

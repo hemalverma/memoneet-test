@@ -1,28 +1,27 @@
-import 'package:infotexh_test/src/logic/services/api/graphql_service.dart';
-import 'package:infotexh_test/src/models/episode_data_model.dart';
-import 'package:infotexh_test/src/models/response/api_response.dart';
-import 'package:infotexh_test/src/models/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:memoneet_test/src/logic/services/firestore_service.dart';
+import 'package:memoneet_test/src/models/note_model.dart';
+import 'package:memoneet_test/src/models/response/api_response.dart';
+import 'package:memoneet_test/src/models/user_model.dart';
 
-import '../graph_ql/qrapg_ql_raw.dart';
-import '../isar_database.dart';
+import '../firebase_auth_provider.dart';
 import 'api_service.dart';
 
 class ApiServiceImpl extends ApiService {
-  final GraphQlService _graphQlService = GraphQlService();
   @override
-  Future<ApiResponse<UserModel>> createUser({required UserModel user}) async {
+  Future<ApiResponse<UserCredential>> createUser(
+      {required UserModel user}) async {
     try {
-      final res = await IsarDatabase.checkEmailExistence(user.email!);
-      if (res != null) {
-        return ApiResponse<UserModel>.error('Email already exist');
+      final response = await FirebaseService.createUser(user);
+      if (response.status == ApiStatus.success) {
+        if (response.data == null) {
+          return ApiResponse<UserCredential>.error('Registration Failed');
+        }
+        return ApiResponse<UserCredential>.success(response.data!);
       }
-      final result = await IsarDatabase.createUser(user);
-      if (result == 0) {
-        return ApiResponse<UserModel>.error('User not created');
-      }
-      return ApiResponse.success(user..id = result);
+      return ApiResponse<UserCredential>.error(response.errorMessage);
     } catch (e) {
-      return ApiResponse<UserModel>.error(e.toString());
+      return ApiResponse<UserCredential>.error(e.toString());
     }
   }
 
@@ -32,11 +31,17 @@ class ApiServiceImpl extends ApiService {
     required String password,
   }) async {
     try {
-      final res = await IsarDatabase.fetchByEmailAndPass(email, password);
-      if (res == null) {
-        return ApiResponse<UserModel>.error('User Does not Exist');
+      final response = await FirebaseService.login(email, password);
+      if (response.status == ApiStatus.success) {
+        if (response.data == null) {
+          return ApiResponse<UserModel>.error('User Does not Exist');
+        }
+        return ApiResponse<UserModel>.success(UserModel()
+          ..email = response.data!.email!
+          ..id = response.data!.uid
+          ..name = response.data!.displayName);
       }
-      return ApiResponse.success(res);
+      return ApiResponse<UserModel>.error(response.errorMessage);
     } catch (e) {
       return ApiResponse<UserModel>.error(e.toString());
     }
@@ -45,11 +50,7 @@ class ApiServiceImpl extends ApiService {
   @override
   Future<ApiResponse<List<UserModel>?>> fetchAllUsers() async {
     try {
-      final res = await IsarDatabase.fetchAllUser();
-      if (res.isEmpty) {
-        return ApiResponse<List<UserModel>>.error('No Users Found');
-      }
-      return ApiResponse.success(res);
+      return ApiResponse<List<UserModel>>.error('No Users Found');
     } catch (e) {
       return ApiResponse<List<UserModel>>.error(e.toString());
     }
@@ -61,40 +62,70 @@ class ApiServiceImpl extends ApiService {
     required UserModel userModel,
   }) async {
     try {
-      final res = await IsarDatabase.updateUser(userId, userModel);
-      if (!res) {
-        return ApiResponse<bool>.error('Failed to Update');
-      }
-      return ApiResponse.success(true);
+      return ApiResponse<bool>.error('Failed to Update');
     } catch (e) {
       return ApiResponse<bool>.error(e.toString());
     }
   }
 
   @override
-  Future<ApiResponse<List<SingleEpisode>>> fetchAllEpisodes() async {
+  Future<ApiResponse<List<NoteModel>>> fetchAllNotes() async {
     try {
       //call graphql api
-      final result = await _graphQlService.performQuery(
-        GraphQlRaw.getEpisodeQuery,
-        variables: {},
-      );
-      if (result.hasException) {
-        return ApiResponse<List<SingleEpisode>>.error(
-            result.exception.toString());
-      }
-      if (result.data == null) {
-        return ApiResponse<List<SingleEpisode>>.error('No Episodes Found');
-      }
 
-      final List<SingleEpisode> episodes =
-          (result.data!['episodes']['results'] as List)
-              .map((e) => SingleEpisode.fromJson(e))
-              .toList();
-
-      return ApiResponse<List<SingleEpisode>>.success(episodes);
+      final res = await FireStoreService.getAllDocuments(collection: 'Notes');
+      if (res != null) {
+        final notes = res
+            .map((e) =>
+                NoteModel.fromJson(e.data() as Map<String, dynamic>, e.id))
+            .toList();
+        return ApiResponse<List<NoteModel>>.success(notes);
+      }
+      return ApiResponse<List<NoteModel>>.error('error');
     } catch (e) {
-      return ApiResponse<List<SingleEpisode>>.error(e.toString());
+      return ApiResponse<List<NoteModel>>.error(e.toString());
+    }
+  }
+
+  @override
+  Future<ApiResponse<bool>> addNote({
+    required NoteModel noteModel,
+  }) async {
+    try {
+      //call graphql api
+
+      final res = await FireStoreService.setData(
+          path: 'Notes/', data: noteModel.toJson());
+      return ApiResponse<bool>.success(true);
+    } catch (e) {
+      return ApiResponse<bool>.error(e.toString());
+    }
+  }
+
+  @override
+  Future<ApiResponse<bool>> deleteNote({
+    required String id,
+  }) async {
+    try {
+      //call graphql api
+      await FireStoreService.deleteData(id: id);
+      return ApiResponse<bool>.success(true);
+    } catch (e) {
+      return ApiResponse<bool>.error(e.toString());
+    }
+  }
+
+  @override
+  Future<ApiResponse<bool>> updateNote({
+    required NoteModel noteModel,
+    required noteId,
+  }) async {
+    try {
+      //call firebase api
+      await FireStoreService.updateData(id: noteId, data: noteModel.toJson());
+      return ApiResponse<bool>.success(true);
+    } catch (e) {
+      return ApiResponse<bool>.error(e.toString());
     }
   }
 }
